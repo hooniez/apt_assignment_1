@@ -1,0 +1,16 @@
+# ninja log v5
+1	631	1647667640292119645	CMakeFiles/starter_code.dir/main.cpp.o	9da8f0d7bf0b419f
+2	608	1647667640270921516	CMakeFiles/starter_code.dir/NodeList.cpp.o	93dfcc28dbd2a893
+2	712	1647667640368628927	CMakeFiles/starter_code.dir/PathPlanner.cpp.o	ce33eb6efde527c2
+2	123	1647667639787954797	CMakeFiles/starter_code.dir/Node.cpp.o	6b320af59381edc1
+529	586	1647406047074418463	starter_code	679ca7b273f0261e
+0	128	1647667750263172291	build.ninja	f2c7b99fffc63def
+2	723	1647667755718299218	CMakeFiles/starter_code.dir/Tests.cpp.o	b07bebd6e2a13560
+2	765	1647667755762712446	CMakeFiles/starter_code.dir/IO.cpp.o	9a7ad919f0feb9b1
+765	824	1647667755823497996	starter_code	2d65256c3a84ee9f
+2	919	1647668036098339565	CMakeFiles/starter_code.dir/PathPlanner.cpp.o	ce33eb6efde527c2
+919	1009	1647668036193732106	starter_code	2d65256c3a84ee9f
+2	800	1647668192163855789	CMakeFiles/starter_code.dir/Tests.cpp.o	b07bebd6e2a13560
+800	878	1647668192244690128	starter_code	2d65256c3a84ee9f
+2	589	1647668500769938116	CMakeFiles/starter_code.dir/PathPlanner.cpp.o	ce33eb6efde527c2
+589	653	1647668500836150259	starter_code	2d65256c3a84ee9f
