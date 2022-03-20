@@ -11,13 +11,13 @@
 
 // Print out an Environment to standard output with path.
 // To be implemented for Milestone 3
-void printPath(Env env, NodeList* solution);
+//void printPath(Env env, NodeList* solution);
 
 int main(int argc, char** argv) {
     std::cout << "TESTING - COMMENT THEM OUT TESTING BEFORE YOU SUBMIT!!!\n" << std::endl;
     testFullOpenList();
     testDeepCopyClosedList();
-//    testGetPath();
+    testGetPath();
     std::cout << "\nDONE TESTING" << std::endl << std::endl;
 
 //    NodeList* reachablePositions = nullptr;
@@ -41,14 +41,14 @@ int main(int argc, char** argv) {
 
 
 
-void printPath(Env env, NodeList* solution) {
-    //TODO
-}
-
-void printReachablePositions(Env env, NodeList* reachablePositions){
-    //TODO
-}
-
+//void printPath(Env env, NodeList* solution) {
+//    //TODO
+//}
+//
+//void printReachablePositions(Env env, NodeList* reachablePositions){
+//    //TODO
+//}
+//
 
 
 

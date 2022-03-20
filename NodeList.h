@@ -3,6 +3,7 @@
 
 #include "Node.h"
 #include "Types.h"
+#include <string>
 
 class NodeList {
 public:
@@ -49,7 +50,13 @@ public:
     * For Milestone 3, rather than adding Nodes from nodes[0] to nodes[x] where x is 'G's distance from 'S' and sorting it in reverse order,
     * straight from the beginning add goalNode at the right index and subsequent nodes until startNode is added at nodes[0]
     */
-   void addAt(int i, NodePtr newNode);
+   void addPathNode(NodePtr newNode);
+
+   /*
+    * Return nodes in the format below
+    * (x1,y1,distance1)(x2,y2,distance2)(x3,y3,distance3)...(xi,yi,distancei)
+    */
+   std::string stringify();
 
    /* This is a suggestion of what you could use. */
    /* You can change this code.                   */

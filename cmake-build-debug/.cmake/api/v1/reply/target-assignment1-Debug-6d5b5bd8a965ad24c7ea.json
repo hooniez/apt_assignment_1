@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "starter_code"
+			"path" : "assignment1"
 		}
 	],
 	"backtrace" : 1,
@@ -52,7 +52,7 @@
 			[
 				{
 					"backtrace" : 2,
-					"path" : "/Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/."
+					"path" : "/Users/hooniesun/rmit/apt/assignment1/."
 				}
 			],
 			"language" : "CXX",
@@ -75,7 +75,7 @@
 			]
 		}
 	],
-	"id" : "starter_code::@6890427a1f51a3e7e1df",
+	"id" : "assignment1::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -91,8 +91,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "starter_code",
-	"nameOnDisk" : "starter_code",
+	"name" : "assignment1",
+	"nameOnDisk" : "assignment1",
 	"paths" : 
 	{
 		"build" : ".",

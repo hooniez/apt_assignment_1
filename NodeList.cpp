@@ -1,18 +1,16 @@
 
 #include "NodeList.h"
 #include <iostream>
-
+#include <sstream>
 
 
 NodeList::NodeList() = default;
 
 
-NodeList::~NodeList(){
-   for (size_t i = 0; i < length; ++i) {
-       delete nodes[i];
-       nodes[i] = nullptr;
-   }
-
+NodeList::~NodeList() {
+    delete nodes[length];
+    nodes[length] = nullptr;
+    --length;
 
 }
 
@@ -58,8 +56,24 @@ void NodeList::clear(){
    
 }
 
-void NodeList::addAt(int i, NodePtr newNode) {
-    nodes[i] = newNode;
+void NodeList::addPathNode(NodePtr newNode) {
+    nodes[newNode->getDistanceToS()] = newNode;
     ++length;
+}
+
+std::string NodeList::stringify() {
+    std::ostringstream os;
+    std::string res;
+
+    int x, y, dis;
+    for (int i = 0; i < this->getLength(); ++i) {
+        x = this->get(i)->getCol();
+        y = this->get(i)->getRow();
+        dis = this->get(i)->getDistanceToS();
+
+        os << "(" << x << "," << y << "," << dis << ")\n";
+    }
+    res = os.str();
+    return res;
 }
 

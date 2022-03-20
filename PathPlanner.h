@@ -50,13 +50,12 @@ public:
    // functions created for testing purposes
    NodeListPtr getOpenList();
    NodeListPtr getClosedList();
-   NodeListPtr getDeepCopiedClosedList();
-   std::string stringifyNodeList(const std::string &);
    /*                                           */
    /* YOU MAY ADD YOUR MODIFICATIONS HERE       */
    /*                                           */
 private:
-    Env env;
+    char** env;
+
     int rows;
     int cols;
     NodePtr startNode;

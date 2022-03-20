@@ -7,6 +7,8 @@
 #include <fstream>
 #include <sstream>
 #include "IO.h"
+
+
 void readEnvStdin(Env env) {
     for (size_t row = 0; row < ENV_DIM; ++row)
         for (size_t col = 0; col < ENV_DIM; ++col)
@@ -21,7 +23,7 @@ void readEnvFile(Env env, std::string fileName){
                 myFile >> env[row][col];
         myFile.close();
     } else {
-        std::cout << "Unable to open file";
+        std::cout << "Unable to open file: ";
     }
 }
 

@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/cmake-build-debug"
+			"value" : "/Users/hooniesun/rmit/apt/assignment1/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -515,7 +515,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code"
+			"value" : "/Users/hooniesun/rmit/apt/assignment1"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -795,7 +795,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "starter_code"
+			"value" : "assignment1"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1078,6 +1078,114 @@
 			"value" : "FALSE"
 		},
 		{
+			"name" : "Project_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/hooniesun/rmit/apt/assignment1/cmake-build-debug"
+		},
+		{
+			"name" : "Project_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "Project_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/hooniesun/rmit/apt/assignment1"
+		},
+		{
+			"name" : "assignment1_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/hooniesun/rmit/apt/assignment1/cmake-build-debug"
+		},
+		{
+			"name" : "assignment1_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "assignment1_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/hooniesun/rmit/apt/assignment1"
+		},
+		{
+			"name" : "assignment_BINARY_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/hooniesun/rmit/apt/assignment1/cmake-build-debug"
+		},
+		{
+			"name" : "assignment_IS_TOP_LEVEL",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "ON"
+		},
+		{
+			"name" : "assignment_SOURCE_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "Value Computed by CMake"
+				}
+			],
+			"type" : "STATIC",
+			"value" : "/Users/hooniesun/rmit/apt/assignment1"
+		},
+		{
 			"name" : "starter_code_BINARY_DIR",
 			"properties" : 
 			[
@@ -1087,7 +1195,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/cmake-build-debug"
+			"value" : "/Users/hooniesun/rmit/apt/assignment1/cmake-build-debug"
 		},
 		{
 			"name" : "starter_code_IS_TOP_LEVEL",
@@ -1111,7 +1219,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code"
+			"value" : "/Users/hooniesun/rmit/apt/assignment1"
 		}
 	],
 	"kind" : "cache",

@@ -5,11 +5,17 @@
 #include <sstream>
 
 PathPlanner::PathPlanner(Env env, int rows, int cols): rows(rows), cols(cols) {
+    // Create an array of pointers to char on the heap
+    this->env = new char*[ENV_DIM];
+    for (size_t i = 0; i < ENV_DIM; ++i)
+        // env is a pointer to an array of char
+        // env[i] decays to the memory address of the first element in env[i], which is a char
+        this->env[i] = env[i];
+
     char currChar;
     for (size_t currRow = 0; currRow < rows; ++currRow) {
         for (size_t currCol = 0; currCol < cols; ++currCol) {
             currChar = env[currRow][currCol];
-            this->env[currRow][currCol] = currChar;
             // Assign startNode with a cell that contains 'S'
             if (currChar == SYMBOL_START)
                 initialPosition(currRow, currCol);
@@ -23,21 +29,25 @@ PathPlanner::PathPlanner(Env env, int rows, int cols): rows(rows), cols(cols) {
    pathList = new NodeList();
 
    // Add startNode to openList
-   openList->addBack(startNode);
+   openList->addBack(new Node(startNode->getRow(), startNode->getCol(), startNode->getDistanceToS()));
    // Point pointerNode to startNode
    pointerNode = startNode;
 }
 
-PathPlanner::~PathPlanner(){
-   delete openList;
-   openList = nullptr;
-   delete closedList;
-   closedList = nullptr;
-   pointerNode = nullptr;
-   delete goalNode;
-   goalNode = nullptr;
-   delete pathList;
-   pathList = nullptr;
+PathPlanner::~PathPlanner() {
+    delete env;
+    delete openList;
+    openList = nullptr;
+    delete closedList;
+    closedList = nullptr;
+    delete pathList;
+    pathList = nullptr;
+    pointerNode = nullptr;
+    delete startNode;
+    startNode = nullptr;
+    delete goalNode;
+    goalNode = nullptr;
+
 }
 
 // As required by the assessment, initialPosition is called to assign startNode.
@@ -61,24 +71,28 @@ NodeList* PathPlanner::getPath(){
     // Iterate in reverse order to find goalNode
     NodePtr currNode;
     bool isGoalNodeFound = false;
-    for (size_t i = closedList->getLength() - 1; i > 0; --i) {
+    for (int i = closedList->getLength() - 1; i >= 0; --i) {
         currNode = closedList->get(i);
 
         if (!isGoalNodeFound) {
             if (currNode->equals(*goalNode)) {
                 // Update goalNode's distance to the correct value
                 goalNode->setDistanceToS(currNode->getDistanceToS());
-                // Add goalNode at pathList's nodes[goalNode's distance]
-                pathList->addAt(goalNode->getDistanceToS(), goalNode);
+                // Add a deep copy of goalNode at pathList's nodes[goalNode's distance]
+                pathList->addPathNode(new Node(goalNode->getRow(), goalNode->getCol(), goalNode->getDistanceToS()));
                 isGoalNodeFound = true;
-                pointerNode = goalNode;
+                pointerNode = currNode;
             }
         } else {
             if (currNode->isPathable(*pointerNode)) {
+                pathList->addPathNode(new Node(currNode->getRow(), currNode->getCol(), currNode->getDistanceToS()));
+                pointerNode = currNode;
 
             }
         }
     }
+
+    return new NodeList(*pathList);
 }
 
 void PathPlanner::goalPosition(int row, int col) {
@@ -160,35 +174,4 @@ NodeListPtr PathPlanner::getOpenList() {
 
 NodeListPtr PathPlanner::getClosedList() {
     return closedList;
-}
-
-NodeListPtr PathPlanner::getDeepCopiedClosedList() {
-    return new NodeList(*closedList);
-}
-
-/*
- * Return nodes in the forrmat below for testing purposes
- * (x1,y1,distance1)(x2,y2,distance2)(x3,y3,distance3)...(xi,yi,distancei)
- */
-std::string PathPlanner::stringifyNodeList(const std::string &listType) {
-    NodeListPtr list = nullptr;
-    std::ostringstream os;
-    std::string res;
-    if (listType == "open")
-        list = openList;
-    else if (listType == "closed")
-        list = closedList;
-    else
-        res = "Please specify which list type you would like to see the contents for";
-
-    int x, y, dis;
-    for (size_t i = 0; i < list->getLength(); ++i) {
-        x = list->get(i)->getCol();
-        y = list->get(i)->getRow();
-        dis = list->get(i)->getDistanceToS();
-
-        os << "(" << x << "," << y << "," << dis << ")\n";
-    }
-    res = os.str();
-    return res;
 }

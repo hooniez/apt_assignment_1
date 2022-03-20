@@ -36,6 +36,8 @@ void testFullOpenList() {
     PathPlanner* pathPlanner = new PathPlanner(test.env, ENV_DIM, ENV_DIM);
 
     std::cout << "Running testFullOpenList" << std::endl;
+    std::cout << "Testing env:" << std::endl;
+    printEnv(test.env);
     // getReachableNodes() algorithm returns a deep copy of closedList
     // which is irrelevant to the current testing, so will free up the associated memory straight away.
     NodeListPtr deepCopyClosedList = pathPlanner->getReachableNodes();
@@ -43,7 +45,7 @@ void testFullOpenList() {
     deepCopyClosedList = nullptr;
 
     // Now we check whether its openList contains exactly the same nodes as noted previously in testFullOpenList.expout
-    std::string actualOut = pathPlanner->stringifyNodeList("open");
+    std::string actualOut = pathPlanner->getOpenList()->stringify();
 
     // For instant feedback, compare whether the expected output is the same as the actual output.
     std::string expOut = ReadFileToString(test.expOutputFile);
@@ -64,6 +66,8 @@ void testFullOpenList() {
 void testDeepCopyClosedList() {
     Test test("Tests/testDeepCopyClosedList");
     std::cout << "Running testDeepCopyClosedList" << std::endl;
+    std::cout << "Testing env:" << std::endl;
+    printEnv(test.env);
 
     PathPlanner* pathPlanner = new PathPlanner(test.env, ENV_DIM, ENV_DIM);
 
@@ -98,13 +102,23 @@ void testDeepCopyClosedList() {
     delete deepCopyClosedList;
 }
 
-//void testGetPath() {
-//    Test test("Tests/testGetPath");
-//    std::cout << "Running testGetPath" << std::endl;
-//
-//    PathPlanner* pathPlanner = new PathPlanner(test.env, ENV_DIM, ENV_DIM);
-//
-//}
+void testGetPath() {
+    Test test("Tests/testFullOpenList");
+    std::cout << "Running testGetPath" << std::endl;
+    std::cout << "Testing env:" << std::endl;
+    printEnv(test.env);
+
+    PathPlanner* pathPlanner = new PathPlanner(test.env, ENV_DIM, ENV_DIM);
+    NodeListPtr closedList = pathPlanner->getReachableNodes();
+    NodeListPtr pathList = pathPlanner->getPath();
+
+    std::cout << pathList->stringify() << std::endl;
+
+    delete pathPlanner;
+    delete pathList;
+    delete closedList;
+
+}
 
 ///* This test ensures that nodes are inserted in openList in the expected order according to env
 // * and getReachableNodes algorithm works as expected by checking whether the contents of openList are identical to those of closedList

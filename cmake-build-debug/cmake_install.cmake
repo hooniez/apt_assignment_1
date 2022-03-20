@@ -1,4 +1,4 @@
-# Install script for directory: /Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code
+# Install script for directory: /Users/hooniesun/rmit/apt/assignment1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/hooniesun/rmit/apt/assignment1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

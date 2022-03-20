@@ -45,9 +45,14 @@ bool Node::equals(Node &other) {
  * (1. The next node's row differs by 1 from pointerNode's row
  * EXCLUSIVE OR
  * 2. The next node's column differs by 1 from pointerNode's column)
- * AND
- * 3. The next node's distance should be smaller by 1.
  */
 bool Node::isPathable(Node &other) {
-
+    bool res = false;
+    int rowDiff = this->getRow() - other.getRow();
+    int colDiff = this->getCol() - other.getCol();
+    if ( ((rowDiff == -1) || (rowDiff == 1)) && (colDiff == 0) )
+        res = true;
+    else if ( ((colDiff == -1) || (colDiff == 1)) && (rowDiff == 0) )
+        res = true;
+    return res;
 }

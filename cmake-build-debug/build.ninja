@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: starter_code
+# Project: assignment1
 # Configurations: Debug
 # =============================================================================
 
@@ -39,13 +39,13 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/cmake-build-debug/
+cmake_ninja_workdir = /Users/hooniesun/rmit/apt/assignment1/cmake-build-debug/
 
 #############################################
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code -B/Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/cmake-build-debug
+  COMMAND = cd /Users/hooniesun/rmit/apt/assignment1/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/hooniesun/rmit/apt/assignment1 -B/Users/hooniesun/rmit/apt/assignment1/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -57,78 +57,78 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /Users/hooniesun/rmit/apt/assignment1/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
 build edit_cache: phony CMakeFiles/edit_cache.util
 
 # =============================================================================
-# Object build statements for EXECUTABLE target starter_code
+# Object build statements for EXECUTABLE target assignment1
 
 
 #############################################
-# Order-only phony target for starter_code
+# Order-only phony target for assignment1
 
-build cmake_object_order_depends_target_starter_code: phony || CMakeFiles/starter_code.dir
+build cmake_object_order_depends_target_assignment1: phony || CMakeFiles/assignment1.dir
 
-build CMakeFiles/starter_code.dir/main.cpp.o: CXX_COMPILER__starter_code_Debug /Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/main.cpp || cmake_object_order_depends_target_starter_code
-  DEP_FILE = CMakeFiles/starter_code.dir/main.cpp.o.d
+build CMakeFiles/assignment1.dir/main.cpp.o: CXX_COMPILER__assignment1_Debug /Users/hooniesun/rmit/apt/assignment1/main.cpp || cmake_object_order_depends_target_assignment1
+  DEP_FILE = CMakeFiles/assignment1.dir/main.cpp.o.d
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -std=gnu++14
-  INCLUDES = -I/Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/.
-  OBJECT_DIR = CMakeFiles/starter_code.dir
-  OBJECT_FILE_DIR = CMakeFiles/starter_code.dir
+  INCLUDES = -I/Users/hooniesun/rmit/apt/assignment1/.
+  OBJECT_DIR = CMakeFiles/assignment1.dir
+  OBJECT_FILE_DIR = CMakeFiles/assignment1.dir
 
-build CMakeFiles/starter_code.dir/Node.cpp.o: CXX_COMPILER__starter_code_Debug /Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/Node.cpp || cmake_object_order_depends_target_starter_code
-  DEP_FILE = CMakeFiles/starter_code.dir/Node.cpp.o.d
+build CMakeFiles/assignment1.dir/Node.cpp.o: CXX_COMPILER__assignment1_Debug /Users/hooniesun/rmit/apt/assignment1/Node.cpp || cmake_object_order_depends_target_assignment1
+  DEP_FILE = CMakeFiles/assignment1.dir/Node.cpp.o.d
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -std=gnu++14
-  INCLUDES = -I/Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/.
-  OBJECT_DIR = CMakeFiles/starter_code.dir
-  OBJECT_FILE_DIR = CMakeFiles/starter_code.dir
+  INCLUDES = -I/Users/hooniesun/rmit/apt/assignment1/.
+  OBJECT_DIR = CMakeFiles/assignment1.dir
+  OBJECT_FILE_DIR = CMakeFiles/assignment1.dir
 
-build CMakeFiles/starter_code.dir/NodeList.cpp.o: CXX_COMPILER__starter_code_Debug /Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/NodeList.cpp || cmake_object_order_depends_target_starter_code
-  DEP_FILE = CMakeFiles/starter_code.dir/NodeList.cpp.o.d
+build CMakeFiles/assignment1.dir/NodeList.cpp.o: CXX_COMPILER__assignment1_Debug /Users/hooniesun/rmit/apt/assignment1/NodeList.cpp || cmake_object_order_depends_target_assignment1
+  DEP_FILE = CMakeFiles/assignment1.dir/NodeList.cpp.o.d
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -std=gnu++14
-  INCLUDES = -I/Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/.
-  OBJECT_DIR = CMakeFiles/starter_code.dir
-  OBJECT_FILE_DIR = CMakeFiles/starter_code.dir
+  INCLUDES = -I/Users/hooniesun/rmit/apt/assignment1/.
+  OBJECT_DIR = CMakeFiles/assignment1.dir
+  OBJECT_FILE_DIR = CMakeFiles/assignment1.dir
 
-build CMakeFiles/starter_code.dir/PathPlanner.cpp.o: CXX_COMPILER__starter_code_Debug /Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/PathPlanner.cpp || cmake_object_order_depends_target_starter_code
-  DEP_FILE = CMakeFiles/starter_code.dir/PathPlanner.cpp.o.d
+build CMakeFiles/assignment1.dir/PathPlanner.cpp.o: CXX_COMPILER__assignment1_Debug /Users/hooniesun/rmit/apt/assignment1/PathPlanner.cpp || cmake_object_order_depends_target_assignment1
+  DEP_FILE = CMakeFiles/assignment1.dir/PathPlanner.cpp.o.d
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -std=gnu++14
-  INCLUDES = -I/Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/.
-  OBJECT_DIR = CMakeFiles/starter_code.dir
-  OBJECT_FILE_DIR = CMakeFiles/starter_code.dir
+  INCLUDES = -I/Users/hooniesun/rmit/apt/assignment1/.
+  OBJECT_DIR = CMakeFiles/assignment1.dir
+  OBJECT_FILE_DIR = CMakeFiles/assignment1.dir
 
-build CMakeFiles/starter_code.dir/IO.cpp.o: CXX_COMPILER__starter_code_Debug /Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/IO.cpp || cmake_object_order_depends_target_starter_code
-  DEP_FILE = CMakeFiles/starter_code.dir/IO.cpp.o.d
+build CMakeFiles/assignment1.dir/IO.cpp.o: CXX_COMPILER__assignment1_Debug /Users/hooniesun/rmit/apt/assignment1/IO.cpp || cmake_object_order_depends_target_assignment1
+  DEP_FILE = CMakeFiles/assignment1.dir/IO.cpp.o.d
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -std=gnu++14
-  INCLUDES = -I/Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/.
-  OBJECT_DIR = CMakeFiles/starter_code.dir
-  OBJECT_FILE_DIR = CMakeFiles/starter_code.dir
+  INCLUDES = -I/Users/hooniesun/rmit/apt/assignment1/.
+  OBJECT_DIR = CMakeFiles/assignment1.dir
+  OBJECT_FILE_DIR = CMakeFiles/assignment1.dir
 
-build CMakeFiles/starter_code.dir/Tests.cpp.o: CXX_COMPILER__starter_code_Debug /Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/Tests.cpp || cmake_object_order_depends_target_starter_code
-  DEP_FILE = CMakeFiles/starter_code.dir/Tests.cpp.o.d
+build CMakeFiles/assignment1.dir/Tests.cpp.o: CXX_COMPILER__assignment1_Debug /Users/hooniesun/rmit/apt/assignment1/Tests.cpp || cmake_object_order_depends_target_assignment1
+  DEP_FILE = CMakeFiles/assignment1.dir/Tests.cpp.o.d
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk -std=gnu++14
-  INCLUDES = -I/Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/.
-  OBJECT_DIR = CMakeFiles/starter_code.dir
-  OBJECT_FILE_DIR = CMakeFiles/starter_code.dir
+  INCLUDES = -I/Users/hooniesun/rmit/apt/assignment1/.
+  OBJECT_DIR = CMakeFiles/assignment1.dir
+  OBJECT_FILE_DIR = CMakeFiles/assignment1.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target starter_code
+# Link build statements for EXECUTABLE target assignment1
 
 
 #############################################
-# Link the executable starter_code
+# Link the executable assignment1
 
-build starter_code: CXX_EXECUTABLE_LINKER__starter_code_Debug CMakeFiles/starter_code.dir/main.cpp.o CMakeFiles/starter_code.dir/Node.cpp.o CMakeFiles/starter_code.dir/NodeList.cpp.o CMakeFiles/starter_code.dir/PathPlanner.cpp.o CMakeFiles/starter_code.dir/IO.cpp.o CMakeFiles/starter_code.dir/Tests.cpp.o
+build assignment1: CXX_EXECUTABLE_LINKER__assignment1_Debug CMakeFiles/assignment1.dir/main.cpp.o CMakeFiles/assignment1.dir/Node.cpp.o CMakeFiles/assignment1.dir/NodeList.cpp.o CMakeFiles/assignment1.dir/PathPlanner.cpp.o CMakeFiles/assignment1.dir/IO.cpp.o CMakeFiles/assignment1.dir/Tests.cpp.o
   FLAGS = -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX12.1.sdk
-  OBJECT_DIR = CMakeFiles/starter_code.dir
+  OBJECT_DIR = CMakeFiles/assignment1.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = starter_code
-  TARGET_PDB = starter_code.dbg
+  TARGET_FILE = assignment1
+  TARGET_PDB = assignment1.dbg
 
 # =============================================================================
 # Target aliases.
@@ -139,9 +139,9 @@ build starter_code: CXX_EXECUTABLE_LINKER__starter_code_Debug CMakeFiles/starter
 # =============================================================================
 
 #############################################
-# Folder: /Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/cmake-build-debug
+# Folder: /Users/hooniesun/rmit/apt/assignment1/cmake-build-debug
 
-build all: phony starter_code
+build all: phony assignment1
 
 # =============================================================================
 # Built-in targets

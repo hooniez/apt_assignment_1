@@ -150,8 +150,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code/cmake-build-debug",
-		"source" : "/Users/hooniesun/rmit/apt/starter_code/Code_Assignments/A1/starter_code"
+		"build" : "/Users/hooniesun/rmit/apt/assignment1/cmake-build-debug",
+		"source" : "/Users/hooniesun/rmit/apt/assignment1"
 	},
 	"version" : 
 	{

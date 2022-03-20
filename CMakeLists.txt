@@ -1,11 +1,11 @@
 cmake_minimum_required(VERSION 3.21)
-project(starter_code)
+project(assignment1)
 
 set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
 
-add_executable(starter_code
+add_executable(assignment1
         main.cpp
         milestone4.h
         Node.cpp
