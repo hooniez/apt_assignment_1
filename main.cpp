@@ -11,10 +11,11 @@
 
 int main(int argc, char** argv) {
     std::cout << "TESTING - COMMENT THEM OUT TESTING BEFORE YOU SUBMIT!!!\n" << std::endl;
-    testFullOpenList();
-    testDeepCopyClosedList();
-    testGetPath();
-    testPrintPath();
+    readEnvFile("Tests/testGetPath.env");
+//    testFullOpenList();
+//    testDeepCopyClosedList();
+//    testGetPath();
+//    testPrintPath();
     std::cout << "\nDONE TESTING" << std::endl << std::endl;
 }
 

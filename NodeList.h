@@ -64,7 +64,7 @@ private:
 
    // NodeList: list of node objects
    // You may assume a fixed size for M1, M2, M3
-   NodePtr nodes[NODE_LIST_ARRAY_MAX_SIZE];
+   Node** nodes;
    // Number of nodes currently in the NodeList
    int length;
 

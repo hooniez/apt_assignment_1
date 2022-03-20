@@ -12,8 +12,11 @@
 // Read an environment from standard input.
 void readEnvStdin(Env);
 
+// Dynamically create an array of pointers to an array of char to represent env
+Env make_env(const int, const int);
+
 // Read an environment from file.
-void readEnvFile(Env, std::string);
+Env readEnvFile(std::string);
 
 // Print out an environment as it is read
 void printEnv(Env);

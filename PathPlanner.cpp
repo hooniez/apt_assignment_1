@@ -67,6 +67,7 @@ NodeList* PathPlanner::getReachableNodes(){
 /*
  * This function needs to be called after separately calling getReachableNodes() as indicated by the main initial template.
  */
+// TODO: the search order will determine the path selected.
 NodeList* PathPlanner::getPath(){
     // Iterate in reverse order to find goalNode
     NodePtr currNode;

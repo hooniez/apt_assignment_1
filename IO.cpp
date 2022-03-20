@@ -9,22 +9,74 @@
 #include "IO.h"
 
 
+/*
+ * This function dynamically allocates
+ *  memory for a generic 2D Environment.
+ */
+Env make_env(const int rows, const int cols) {
+    Env env = nullptr;
+
+    if (rows >= 0 && cols >= 0) {
+        env = new char*[rows];
+        for (int i = 0; i != rows; ++i) {
+            env[i] = new char[cols];
+        }
+    }
+
+    return env;
+}
+
+/*
+ * This function is to help you delete a
+ * dynamically allocated 2D Environment.
+ */
+void delete_env(Env env, int rows, int cols) {
+    if (rows >= 0 && cols >= 0) {
+        for (int i = 0; i != rows; ++i) {
+            delete env[i];
+        }
+        delete env;
+    }
+
+    return;
+}
+
+// TODO make it work with milestone 4 implementation
 void readEnvStdin(Env env) {
     for (size_t row = 0; row < ENV_DIM; ++row)
         for (size_t col = 0; col < ENV_DIM; ++col)
             std::cin >> env[row][col];
 }
 
-void readEnvFile(Env env, std::string fileName){
-    std::ifstream myFile(fileName);
-    if (myFile.is_open()) {
-        for (size_t row = 0; row < ENV_DIM; ++row)
-            for (size_t col = 0; col < ENV_DIM; ++col)
-                myFile >> env[row][col];
-        myFile.close();
+// Read an environment from file and create an env dynamically on the heap
+Env readEnvFile(std::string fileName){
+    std::ifstream envFile(fileName);
+    Env env = nullptr;
+
+    std::string line;
+    size_t numRows = 0, numCols = 0;
+    if (envFile.is_open()) {
+        // Find out the number of rows and columns, with which to create env, in runtime
+        while (std::getline(envFile, line)) {
+            ++numRows;
+        }
+        // Record the number of characters in the last row, which is the same as every other row preceding it.
+        numCols = line.length();
+        // Create an array of pointers to an array of char on the heap
+        env = make_env(numRows, numCols);
+
+        // Re-read the file again by resetting eofbit and changing the position of the cursor
+        envFile.clear();
+        envFile.seekg(0, envFile.beg);
+
+        // Actually assign each cell with the value read from the file
+        for (size_t row = 0; row < numRows; ++row)
+            for (size_t col = 0; col < numCols; ++col)
+                envFile >> env[row][col];
     } else {
         std::cout << "Unable to open file: ";
     }
+    return env;
 }
 
 void printEnv(Env env) {

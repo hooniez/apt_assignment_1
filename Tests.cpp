@@ -18,7 +18,7 @@
  */
 
 Test::Test(const std::string & loc): envFile(loc + ".env"), expOutputFile(loc + ".expout"), actualOutputFile(loc + ".actualout")  {
-    readEnvFile(env, envFile);
+    readEnvFile(envFile);
 }
 
 void compOutputs(const std::string &expOut, const std::string& actualOut) {
