@@ -18,8 +18,14 @@ void readEnvFile(Env, std::string);
 // Print out an environment as it is read
 void printEnv(Env);
 
+std::string stringifyEnv(Env);
+
 std::string ReadFileToString(const std::string &);
 
 void stringToFile(const std::string &, const std::string &);
+
+// Print out an Environment to standard output with path.
+// To be implemented for Milestone 3
+void printPath(Env env, NodeList* solution);
 
 #endif //COSC_ASS_ONE_IO_H

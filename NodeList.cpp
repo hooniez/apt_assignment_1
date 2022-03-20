@@ -8,10 +8,11 @@ NodeList::NodeList() = default;
 
 
 NodeList::~NodeList() {
-    delete nodes[length];
-    nodes[length] = nullptr;
-    --length;
-
+    for (size_t i = 0; i < length; ++i) {
+        delete nodes[i];
+        nodes[i] = nullptr;
+    }
+    length = 0;
 }
 
 NodeList:: NodeList(NodeList& other){

@@ -1,5 +1,5 @@
-a deep copy of ClosedList's first node's distance: 38
-ClosedList's first node's distance: 38
+a deep copy of ClosedList's first node's distance: 34
+ClosedList's first node's distance: 34
 -----After the distance change----
 a deep copy of ClosedList's first node's distance: -1
-ClosedList's first node's distance: 38
+ClosedList's first node's distance: 34

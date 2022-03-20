@@ -56,3 +56,19 @@ bool Node::isPathable(Node &other) {
         res = true;
     return res;
 }
+
+
+Direction Node::getDirectionTo(Node &other) {
+    Direction dir = UP;
+    int rowDiff = this->getRow() - other.getRow();
+    int colDiff = this->getCol() - other.getCol();
+    if (rowDiff == -1)
+        dir = DOWN;
+    else if (rowDiff == 1)
+        dir = UP;
+    else if (colDiff == 1)
+        dir = LEFT;
+    else if (colDiff == -1)
+        dir = RIGHT;
+    return dir;
+}

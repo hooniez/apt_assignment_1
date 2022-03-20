@@ -102,14 +102,16 @@ void PathPlanner::goalPosition(int row, int col) {
 
 /*
  * Check whether the cell in question is reachable.
- * For the cell to be reachable, it has to be within the boundaries of env and contains 'S', 'G', or '.'
+ * For the cell to be reachable, it has to be within the boundaries of env
+ * (In this assessment, we assume the environment is surrounded by walls)
+ * and it has to contains 'S', 'G', or '.'.
  */
 bool PathPlanner::isReachable(int row, int col) {
     bool res = false;
     // If row or column is inside the boundaries of env
     if ((row >= 0) && (row < rows) && (col >= 0) && (col < cols))
         // If the value of the cell in question is not equal to '='
-        if (env[row][col] != SYMBOL_WALL)
+        if ((env[row][col] == SYMBOL_EMPTY) || (env[row][col] == SYMBOL_START) || (env[row][col] == SYMBOL_GOAL))
             res = true;
     return res;
 }
@@ -175,3 +177,4 @@ NodeListPtr PathPlanner::getOpenList() {
 NodeListPtr PathPlanner::getClosedList() {
     return closedList;
 }
+

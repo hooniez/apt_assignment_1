@@ -21,15 +21,13 @@ public:
    int getDistanceToS();
    void setDistanceToS(int distanceToS);
 
-
-   /*                                           */
-   /* YOU MAY ADD YOUR MODIFICATIONS HERE       */
-   /*                                           */
-
    void setRow(int);
    void setCol(int);
    bool equals(Node &);
-   bool isPathable(Node &);
+   // Checks whether this Node is traversable from other Node
+   bool isPathable(Node &other);
+   // Returns Up, Right, Down, or Left, depending on where this Node is relative to other Node
+   Direction getDirectionTo(Node &other);
    
    // Constructor/Destructor
    Node();

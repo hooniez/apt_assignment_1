@@ -6,6 +6,7 @@
 #define COSC_ASS_ONE_TESTS_H
 
 #include "PathPlanner.h"
+#include "Types.h"
 
 struct Test {
     Test(const std::string &);
@@ -26,6 +27,9 @@ void testDeepCopyClosedList();
 
 // Test whether openList contains the expected number of nodes
 void testGetPath();
+
+// Test whether Milestone 3 printPath() prints the env with correct direction symbols
+void testPrintPath();
 
 
 

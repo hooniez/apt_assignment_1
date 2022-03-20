@@ -10,6 +10,8 @@
 #define NUM_CELLS 4
 #define NUM_POINTS 2
 
+
+
 class PathPlanner {
 public:
 
@@ -50,9 +52,7 @@ public:
    // functions created for testing purposes
    NodeListPtr getOpenList();
    NodeListPtr getClosedList();
-   /*                                           */
-   /* YOU MAY ADD YOUR MODIFICATIONS HERE       */
-   /*                                           */
+
 private:
     char** env;
 

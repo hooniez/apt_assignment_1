@@ -16,4 +16,11 @@ typedef char Env[ENV_DIM][ENV_DIM];
 #define SYMBOL_GOAL     'G'
 #define SYMBOL_START    'S'
 
+enum Direction {
+    UP,
+    RIGHT,
+    DOWN,
+    LEFT
+};
+
 #endif // COSC_ASS_ONE_TYPES
