@@ -4,7 +4,9 @@
 #include <sstream>
 
 
-NodeList::NodeList() = default;
+NodeList::NodeList() {
+
+}
 
 
 NodeList::~NodeList() {

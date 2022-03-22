@@ -4,14 +4,7 @@
 #include <iostream>
 #include <sstream>
 
-PathPlanner::PathPlanner(Env env, int rows, int cols): rows(rows), cols(cols) {
-    // Create an array of pointers to char on the heap
-    this->env = new char*[ENV_DIM];
-    for (size_t i = 0; i < ENV_DIM; ++i)
-        // env is a pointer to an array of char
-        // env[i] decays to the memory address of the first element in env[i], which is a char
-        this->env[i] = env[i];
-
+PathPlanner::PathPlanner(Env env, int rows, int cols): env(env), rows(rows), cols(cols) {
     char currChar;
     for (size_t currRow = 0; currRow < rows; ++currRow) {
         for (size_t currCol = 0; currCol < cols; ++currCol) {
@@ -35,7 +28,6 @@ PathPlanner::PathPlanner(Env env, int rows, int cols): rows(rows), cols(cols) {
 }
 
 PathPlanner::~PathPlanner() {
-    delete env;
     delete openList;
     openList = nullptr;
     delete closedList;
@@ -67,7 +59,6 @@ NodeList* PathPlanner::getReachableNodes(){
 /*
  * This function needs to be called after separately calling getReachableNodes() as indicated by the main initial template.
  */
-// TODO: the search order will determine the path selected.
 NodeList* PathPlanner::getPath(){
     // Iterate in reverse order to find goalNode
     NodePtr currNode;

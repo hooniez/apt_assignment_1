@@ -7,28 +7,26 @@
 
 #include "Types.h"
 #include <string>
-#include "NodeList.h"
+//#include "NodeList.h"
 
-// Read an environment from standard input.
-void readEnvStdin(Env);
 
-// Dynamically create an array of pointers to an array of char to represent env
-Env make_env(const int, const int);
 
-// Read an environment from file.
-Env readEnvFile(std::string);
+//// Build a dynamic 2d array according to std::cin
+//Env make_env(const int rows, const int cols);
+//
+//// Read an environment from file.
+////EnvPtr readEnvFile(std::string);
+//
 
-// Print out an environment as it is read
-void printEnv(Env);
+//
+//std::string stringifyEnv(Env);
+//
+//std::string ReadFileToString(const std::string &);
+//
+//void stringToFile(const std::string &, const std::string &);
+//
+//// Print out an Environment to standard output with path.
+//// To be implemented for Milestone 3
 
-std::string stringifyEnv(Env);
-
-std::string ReadFileToString(const std::string &);
-
-void stringToFile(const std::string &, const std::string &);
-
-// Print out an Environment to standard output with path.
-// To be implemented for Milestone 3
-void printPath(Env env, NodeList* solution);
 
 #endif //COSC_ASS_ONE_IO_H

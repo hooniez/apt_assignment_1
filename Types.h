@@ -2,8 +2,6 @@
 #ifndef COSC_ASS_ONE_TYPES
 #define COSC_ASS_ONE_TYPES
 
-#include <math.h>
-
 #define ENV_DIM                     20
 #define NODE_LIST_ARRAY_MAX_SIZE    4*(ENV_DIM * ENV_DIM)
 

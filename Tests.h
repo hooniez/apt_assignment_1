@@ -10,10 +10,10 @@
 
 struct Test {
     Test(const std::string &);
+    ~Test();
     std::string envFile;
     std::string expOutputFile;
     std::string actualOutputFile;
-    Env env;
 };
 
 // Compare the actual output to the expected output for a quick comparison
@@ -30,8 +30,6 @@ void testGetPath();
 
 // Test whether Milestone 3 printPath() prints the env with correct direction symbols
 void testPrintPath();
-
-
 
 
 #endif //COSC_ASS_ONE_TESTS_H

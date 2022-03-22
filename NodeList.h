@@ -61,12 +61,9 @@ public:
    /* This is a suggestion of what you could use. */
    /* You can change this code.                   */
 private:
-
-   // NodeList: list of node objects
-   // You may assume a fixed size for M1, M2, M3
-   Node** nodes;
-   // Number of nodes currently in the NodeList
-   int length;
+    Node** nodes;
+    // Number of nodes currently in the NodeList
+    int length;
 
 
 };

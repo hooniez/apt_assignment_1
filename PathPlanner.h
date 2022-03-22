@@ -54,8 +54,7 @@ public:
    NodeListPtr getClosedList();
 
 private:
-    char** env;
-
+    Env env;
     int rows;
     int cols;
     NodePtr startNode;
