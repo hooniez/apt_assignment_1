@@ -17,14 +17,17 @@ PathPlanner::PathPlanner(Env env, int rows, int cols): env(env), rows(rows), col
         }
     }
 
-   openList = new NodeList();
-   closedList = new NodeList();
-   pathList = new NodeList();
+    // Milestone 4: Make sure the max length is dynamically generated
+    int max_length = rows * cols;
 
-   // Add startNode to openList
-   openList->addBack(new Node(startNode->getRow(), startNode->getCol(), startNode->getDistanceToS()));
-   // Point pointerNode to startNode
-   pointerNode = startNode;
+    openList = new NodeList(max_length);
+    closedList = new NodeList(max_length);
+    pathList = new NodeList(max_length);
+
+    // Add startNode to openList
+    openList->addBack(new Node(startNode->getRow(), startNode->getCol(), startNode->getDistanceToS()));
+    // Point pointerNode to startNode
+    pointerNode = startNode;
 }
 
 PathPlanner::~PathPlanner() {
@@ -76,10 +79,34 @@ NodeList* PathPlanner::getPath(){
                 pointerNode = currNode;
             }
         } else {
-            if (currNode->isPathable(*pointerNode)) {
+            if (currNode->isTraversable(*pointerNode)) {
+                // Deepcopy currNode into nodes[currNode->getDistanceToS()]
                 pathList->addPathNode(new Node(currNode->getRow(), currNode->getCol(), currNode->getDistanceToS()));
                 pointerNode = currNode;
-
+            }
+            else {
+                // The number of paths of the same length from goal to start cannot exceed 2.
+                // If currNode's distance is the same as the pointer's and currNode is traversable to the second last node in pathList
+                // replace pointerNode with currNode since currNode is added before pointerNode in closedList
+                /*
+                 *  ====S..=======
+                    ====...=======
+                    ====......====
+                    =======...====
+                    =======..G====
+                    ==============
+                    This check is necessary for an edge case like the above.
+                 */
+                if (currNode->getDistanceToS() == pointerNode->getDistanceToS()) {
+                    // Check if currNode is traversable to the node after pointerNode in pathList
+                    NodePtr secondLastNode = pathList->get(pointerNode->getDistanceToS() + 1);
+                    if (secondLastNode->isTraversable(*currNode)) {
+                        NodePtr lastNode = pathList->get(pointerNode->getDistanceToS());
+                        delete lastNode;
+                        lastNode = new Node(currNode->getRow(), currNode->getCol(), currNode->getDistanceToS());
+                        pointerNode = currNode;
+                    }
+                }
             }
         }
     }

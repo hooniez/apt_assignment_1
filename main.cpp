@@ -39,11 +39,11 @@ int main(int argc, char** argv) {
 
     PathPlanner* pathPlanner = new PathPlanner(env, numRows, numCols);
     NodeListPtr closedList = pathPlanner->getReachableNodes();
+    std::cout << closedList->stringify() << std::endl;
     NodeListPtr pathList = pathPlanner->getPath();
 
+
     printPath(env, pathList);
-
-
 
     delete_env(env, numRows, numCols);
     delete pathPlanner;
@@ -65,22 +65,28 @@ int main(int argc, char** argv) {
 }
 
 void readEnvStdin(Env &env) {
-    std::string line;
-    size_t numRows = 0, numCols = 0;
-
     // Store the standard input stream's content so that it can be read twice
     std::ostringstream os;
+    bool numColsFound = false;
+    size_t numRows = 0, numCols = 0;
 
+    char ch;
     // Read the first row to assign numCols with the correct value
-    std::getline(std::cin, line);
-    os << line;
-    ++numRows;
-    // Record the number of characters in the last row, which is the same as every other row preceding it.
-    numCols = line.length();
-    while (std::getline(std::cin, line)) {
-        os << line;
-        ++numRows;
+    while (std::cin.get(ch)) {
+        os << ch;
+        if (!numColsFound) {
+            ++numCols;
+            // If the new line character is encountered, increment numRows by 1
+            if (ch == '\n') {
+                numColsFound = true;
+            }
+        }
+        if (ch == '\n')
+            ++numRows;
     }
+
+    // Add another row for nullptr at the end of the array of pointers
+    ++numRows;
 
     std::string s = os.str();
     const char* chars = s.c_str();
@@ -89,16 +95,13 @@ void readEnvStdin(Env &env) {
     env = make_env(numRows, numCols);
 
     size_t i = 0;
-    for (size_t row = 0; row < numRows; ++row) {
+    for (size_t row = 0; row < numRows - 1; ++row) {
         for (size_t col = 0; col < numCols; ++col) {
             env[row][col] = chars[i++];
         }
-        // Insert the null terminator in env[row][numCols]
-        env[row][numCols] = '\0';
-
     }
     // Make sure the last row is a nullptr;
-    env[numRows] = nullptr;
+    env[numRows - 1] = nullptr;
 }
 
 void printEnv(Env env) {
@@ -107,21 +110,17 @@ void printEnv(Env env) {
     // while env[row] is not nullptr
     while (env[row] != nullptr) {
         // while the character in the row is not '\0'
-        while (env[row][col] != '\0') {
+        while (env[row][col] != '\n') {
             std::cout << env[row][col++];
         }
+        // Print out the new line character
+        std::cout << env[row][col];
         ++row;
         col = 0;
-        std::cout << std::endl;
     }
 }
 
 Env make_env(size_t rows, size_t cols) {
-    // Make sure to create one more column in each row for the null terminator
-    // and create one more row for nullptr
-    ++rows;
-    ++cols;
-
     Env env = nullptr;
     if (rows >= 0 && cols >= 0)  {
         env = new char*[rows];
@@ -133,10 +132,6 @@ Env make_env(size_t rows, size_t cols) {
 }
 
 void delete_env(Env env, size_t rows, size_t cols) {
-    // Make sure to delete the null terminators and the nullptr.
-    ++rows;
-    ++cols;
-
     if (env) { // if env is not nullptr
         if (rows >= 0 && cols >= 0) {
             for (size_t i = 0; i != rows; ++i) {
@@ -158,7 +153,7 @@ size_t getEnvRows(Env env) {
 
 size_t getEnvCols(Env env) {
     size_t i = 0, numCols = 0;
-    while (env[0][i] != '\0')
+    while (env[0][i] != '\n')
         ++i;
     numCols = i;
     return numCols;

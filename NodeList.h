@@ -47,6 +47,16 @@ public:
    /*                                           */
 
    /*
+    * For Milestone 4, another constructor that takes the length of nodes is needed
+    */
+   NodeList(int max_length);
+
+   /*
+    * For Milestone 4, getMaxLength method is needed
+    */
+   int getMaxLength();
+
+   /*
     * For Milestone 3, rather than adding Nodes from nodes[0] to nodes[x] where x is 'G's distance from 'S' and sorting it in reverse order,
     * straight from the beginning add goalNode at the right index and subsequent nodes until startNode is added at nodes[0]
     */
@@ -58,12 +68,12 @@ public:
     */
    std::string stringify();
 
-   /* This is a suggestion of what you could use. */
-   /* You can change this code.                   */
 private:
     Node** nodes;
     // Number of nodes currently in the NodeList
     int length;
+    int max_length;
+
 
 
 };

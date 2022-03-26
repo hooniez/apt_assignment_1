@@ -25,7 +25,7 @@ public:
    void setCol(int);
    bool equals(Node &);
    // Checks whether this Node is traversable from other Node
-   bool isPathable(Node &other);
+   bool isTraversable(Node &other);
    // Returns Up, Right, Down, or Left, depending on where this Node is relative to other Node
    Direction getDirectionTo(Node &other);
    
@@ -33,7 +33,6 @@ public:
    Node();
    Node(int row, int col, int distanceToS);
    ~Node();
-    
     
 private:
     int row;

@@ -1,1 +1,62 @@
-(1,5,0)
+(4,0,0)
+(5,0,1)
+(4,1,1)
+(6,0,2)
+(4,2,2)
+(6,1,3)
+(5,2,3)
+(6,2,4)
+(7,2,5)
+(8,2,6)
+(7,3,6)
+(9,2,7)
+(8,3,7)
+(7,4,7)
+(9,3,8)
+(8,4,8)
+(9,4,9)
+
+
+
+        if (!isGoalNodeFound) {
+            if (currNode->equals(*goalNode)) {
+                // Update goalNode's distance to the correct value
+                goalNode->setDistanceToS(currNode->getDistanceToS());
+                // Add a deep copy of goalNode at pathList's nodes[goalNode's distance]
+                pathList->addPathNode(new Node(goalNode->getRow(), goalNode->getCol(), goalNode->getDistanceToS()));
+                isGoalNodeFound = true;
+                pointerNode = currNode;
+            }
+        } else {
+            if (currNode->isTraversable(*pointerNode)) {
+                pathList->addPathNode(new Node(currNode->getRow(), currNode->getCol(), currNode->getDistanceToS()));
+                pointerNode = currNode;
+            }
+//            } else {
+//                // The number of paths of the same length from goal to start cannot exceed 2.
+//                // If currNode's distance is the same as the pointer's and currNode is traversable to the second last node in pathList
+//                // replace pointerNode with currNode since currNode is added before pointerNode in closedList
+//                /*
+//                 *  ====S..=======
+//                    ====...=======
+//                    ====......====
+//                    =======...====
+//                    =======..G====
+//                    ==============
+//                    This check is necessary for an edge case like the above.
+//                 */
+//                if (currNode->getDistanceToS() == pointerNode->getDistanceToS()) {
+//                    // Check if currNode is traversable to the second last node in pathList
+//                    NodePtr secondLastNode = pathList->get(pathList->getLength() - 2);
+//                    if (secondLastNode->isTraversable(*currNode)) {
+//                        NodePtr lastNode = pathList->get(pathList->getLength() - 1);
+//                        delete lastNode;
+//                        lastNode = new Node(currNode->getRow(), currNode->getCol(), currNode->getDistanceToS());
+//                        pointerNode = currNode;
+//                    }
+//
+//
+//
+//                }
+//
+//            }

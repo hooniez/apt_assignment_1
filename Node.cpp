@@ -1,12 +1,11 @@
 
 #include "Node.h"
 
-Node::Node() = default;
+Node::Node() {}
 
 Node::Node(int row, int col, int distanceToS): row(row), col(col), distanceToS(distanceToS) {}
     
 Node::~Node() {
-   //TODO
 }
 
 int Node::getRow() {
@@ -46,7 +45,7 @@ bool Node::equals(Node &other) {
  * EXCLUSIVE OR
  * 2. The next node's column differs by 1 from pointerNode's column)
  */
-bool Node::isPathable(Node &other) {
+bool Node::isTraversable(Node &other) {
     bool res = false;
     int rowDiff = this->getRow() - other.getRow();
     int colDiff = this->getCol() - other.getCol();

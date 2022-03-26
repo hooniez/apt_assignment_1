@@ -4,20 +4,27 @@
 #include <sstream>
 
 
-NodeList::NodeList() {
+NodeList::NodeList() {}
 
+NodeList::NodeList(int max_length) {
+    nodes = new Node*[max_length];
+    this->max_length = max_length;
 }
 
-
 NodeList::~NodeList() {
+    // Delete each Node
     for (size_t i = 0; i < length; ++i) {
         delete nodes[i];
         nodes[i] = nullptr;
     }
     length = 0;
+    // Delete nodes
+    delete[] nodes;
+    nodes = nullptr;
 }
 
 NodeList:: NodeList(NodeList& other){
+    nodes = new Node*[other.getMaxLength()];
     // Deep copy the contents of other.nodes into this->nodes
     NodePtr currOtherNode;
     for (size_t i = 0; i < other.getLength(); ++i) {
@@ -80,3 +87,6 @@ std::string NodeList::stringify() {
     return res;
 }
 
+int NodeList::getMaxLength() {
+    return max_length;
+}
