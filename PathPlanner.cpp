@@ -18,14 +18,14 @@ PathPlanner::PathPlanner(Env env, int rows, int cols): env(env), rows(rows), col
     }
 
     // Milestone 4: Make sure the max length is dynamically generated
-    int max_length = rows * cols;
+    nodeListMaxLength = rows * cols;
 
-    openList = new NodeList(max_length);
-    closedList = new NodeList(max_length);
-    pathList = new NodeList(max_length);
+    openList = new NodeList(nodeListMaxLength);
+    closedList = new NodeList(nodeListMaxLength);
+    pathList = new NodeList(nodeListMaxLength);
 
     // Add startNode to openList
-    openList->addBack(new Node(startNode->getRow(), startNode->getCol(), startNode->getDistanceToS()));
+    openList->addBack(new Node(*startNode));
     // Point pointerNode to startNode
     pointerNode = startNode;
 }
@@ -66,6 +66,11 @@ NodeList* PathPlanner::getPath(){
     // Iterate in reverse order to find goalNode
     NodePtr currNode;
     bool isGoalNodeFound = false;
+    closedList->stringify();
+    // currDisToSearch is used to add all the nodes with the equal distance traversable from the previous node
+    int currDisToSearch = 0;
+    // A stack to contain all traversable equidistant nodes
+    NodeListPtr stack = new NodeList(nodeListMaxLength);
     for (int i = closedList->getLength() - 1; i >= 0; --i) {
         currNode = closedList->get(i);
 
@@ -77,39 +82,72 @@ NodeList* PathPlanner::getPath(){
                 pathList->addPathNode(new Node(goalNode->getRow(), goalNode->getCol(), goalNode->getDistanceToS()));
                 isGoalNodeFound = true;
                 pointerNode = currNode;
+                // The distance of the next node to look for
+                currDisToSearch = goalNode->getDistanceToS() - 1;
+//                std::cout << "goalNode is added" << std::endl;
+//                pathList->stringify();
             }
         } else {
+            if (currNode->getDistanceToS() < currDisToSearch) {
+                // Add a node from the top of the stack to pathList
+                // decrement currDisToSearch
+                // Empty stack
+                NodePtr topNode = stack->get(stack->getLength() - 1);
+                NodePtr newNode = new Node(topNode->getRow(), topNode->getCol(), topNode->getDistanceToS());
+                topNode = nullptr;
+                pathList->addPathNode(newNode);
+                pointerNode = newNode;
+                --currDisToSearch;
+                delete stack;
+                stack = nullptr;
+                stack = new NodeList(nodeListMaxLength);
+
+            }
+            // If the node in question has the same distance as currDisToSearch and is traversable from the last node added to pathList
+            // Add it to a stack for further processing.
             if (currNode->isTraversable(*pointerNode)) {
-                // Deepcopy currNode into nodes[currNode->getDistanceToS()]
-                pathList->addPathNode(new Node(currNode->getRow(), currNode->getCol(), currNode->getDistanceToS()));
-                pointerNode = currNode;
+                if (currNode->getDistanceToS() == 0)
+                    pathList->addPathNode(new Node(currNode->getRow(), currNode->getCol(), currNode->getDistanceToS()));
+                else
+                    stack->addBack(new Node(currNode->getRow(), currNode->getCol(), currNode->getDistanceToS()));
+
+//                // Deepcopy currNode into nodes[currNode->getDistanceToS()]
+//                pathList->addPathNode(new Node(currNode->getRow(), currNode->getCol(), currNode->getDistanceToS()));
+//                pointerNode = currNode;
+//                std::cout << "currNode is traversable to pointerNode" << std::endl;
+//                pathList->stringify();
             }
-            else {
-                // The number of paths of the same length from goal to start cannot exceed 2.
-                // If currNode's distance is the same as the pointer's and currNode is traversable to the second last node in pathList
-                // replace pointerNode with currNode since currNode is added before pointerNode in closedList
-                /*
-                 *  ====S..=======
-                    ====...=======
-                    ====......====
-                    =======...====
-                    =======..G====
-                    ==============
-                    This check is necessary for an edge case like the above.
-                 */
-                if (currNode->getDistanceToS() == pointerNode->getDistanceToS()) {
-                    // Check if currNode is traversable to the node after pointerNode in pathList
-                    NodePtr secondLastNode = pathList->get(pointerNode->getDistanceToS() + 1);
-                    if (secondLastNode->isTraversable(*currNode)) {
-                        NodePtr lastNode = pathList->get(pointerNode->getDistanceToS());
-                        delete lastNode;
-                        lastNode = new Node(currNode->getRow(), currNode->getCol(), currNode->getDistanceToS());
-                        pointerNode = currNode;
-                    }
-                }
-            }
+//            else if () { // Make sure the two cells are
+//                // The number of paths of the same length from goal to start cannot exceed 2.
+//                // If currNode's distance is the same as the pointer's and currNode is traversable to the second last node in pathList
+//                // replace pointerNode with currNode since currNode is added before pointerNode in closedList
+//                /*
+//                 *  ====S..=======
+//                    ====...=======
+//                    ====......====
+//                    =======...====
+//                    =======..G====
+//                    ==============
+//                    This check is necessary for an edge case like the above.
+//                 */
+//                if (currNode->getDistanceToS() == pointerNode->getDistanceToS()) {
+//                    std::cout << "Check whether the node immediately after pointerNode shares the equal distance" << std::endl;
+//                    pathList->stringify();
+//                    // Check if currNode is traversable to the node after pointerNode in pathList
+//                    NodePtr secondLastNode = pathList->get(pointerNode->getDistanceToS() + 1);
+//                    if (secondLastNode->isTraversable(*currNode)) {
+//                        NodePtr lastNode = pathList->get(pointerNode->getDistanceToS());
+//                        delete lastNode;
+//                        lastNode = new Node(currNode->getRow(), currNode->getCol(), currNode->getDistanceToS());
+//                        pointerNode = currNode;
+//                    }
+//                }
+//            }
         }
     }
+
+    delete stack;
+    stack = nullptr;
 
     return new NodeList(*pathList);
 }

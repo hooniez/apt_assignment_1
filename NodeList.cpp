@@ -6,25 +6,16 @@
 
 NodeList::NodeList() {}
 
-NodeList::NodeList(int max_length) {
+NodeList::NodeList(int max_length): length(0), max_length(max_length) {
     nodes = new Node*[max_length];
-    this->max_length = max_length;
 }
 
 NodeList::~NodeList() {
-    // Delete each Node
-    for (size_t i = 0; i < length; ++i) {
-        delete nodes[i];
-        nodes[i] = nullptr;
-    }
-    length = 0;
-    // Delete nodes
-    delete[] nodes;
-    nodes = nullptr;
+    clear();
 }
 
-NodeList:: NodeList(NodeList& other){
-    nodes = new Node*[other.getMaxLength()];
+NodeList:: NodeList(NodeList& other): length(0), max_length(other.getMaxLength()){
+    nodes = new Node*[max_length];
     // Deep copy the contents of other.nodes into this->nodes
     NodePtr currOtherNode;
     for (size_t i = 0; i < other.getLength(); ++i) {
@@ -63,7 +54,15 @@ bool NodeList::containsNode(NodePtr node){
 }
 
 void NodeList::clear(){
-   
+    // Delete each Node
+    for (size_t i = 0; i < length; ++i) {
+        delete nodes[i];
+        nodes[i] = nullptr;
+    }
+    length = 0;
+    // Delete nodes
+    delete[] nodes;
+    nodes = nullptr;
 }
 
 void NodeList::addPathNode(NodePtr newNode) {
@@ -81,7 +80,7 @@ std::string NodeList::stringify() {
         y = this->get(i)->getRow();
         dis = this->get(i)->getDistanceToS();
 
-        os << "(" << x << "," << y << "," << dis << ")\n";
+        os << i << "th: (" << x << "," << y << "," << dis << ")\n";
     }
     res = os.str();
     return res;

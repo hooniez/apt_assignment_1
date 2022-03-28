@@ -4,6 +4,8 @@
 Node::Node() {}
 
 Node::Node(int row, int col, int distanceToS): row(row), col(col), distanceToS(distanceToS) {}
+
+Node::Node(Node &other): row(other.getRow()), col(other.getCol()), distanceToS(other.getDistanceToS()) {}
     
 Node::~Node() {
 }

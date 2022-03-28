@@ -42,6 +42,8 @@ int main(int argc, char** argv) {
     std::cout << closedList->stringify() << std::endl;
     NodeListPtr pathList = pathPlanner->getPath();
 
+    pathList->stringify();
+
 
     printPath(env, pathList);
 
@@ -62,6 +64,8 @@ int main(int argc, char** argv) {
 //    testGetPath();
 //    testPrintPath();
     std::cout << "\nDONE TESTING" << std::endl << std::endl;
+
+    return EXIT_SUCCESS;
 }
 
 void readEnvStdin(Env &env) {
@@ -89,7 +93,7 @@ void readEnvStdin(Env &env) {
     ++numRows;
 
     std::string s = os.str();
-    const char* chars = s.c_str();
+//    const char* chars = s.c_str();
 
     // Create an array of pointers to an array of char on the heap
     env = make_env(numRows, numCols);
@@ -97,7 +101,7 @@ void readEnvStdin(Env &env) {
     size_t i = 0;
     for (size_t row = 0; row < numRows - 1; ++row) {
         for (size_t col = 0; col < numCols; ++col) {
-            env[row][col] = chars[i++];
+            env[row][col] = s[i++];
         }
     }
     // Make sure the last row is a nullptr;

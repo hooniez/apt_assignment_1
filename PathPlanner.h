@@ -10,8 +10,6 @@
 #define NUM_CELLS 4
 #define NUM_POINTS 2
 
-
-
 class PathPlanner {
 public:
 
@@ -57,6 +55,7 @@ private:
     Env env;
     int rows;
     int cols;
+    int nodeListMaxLength;
     NodePtr startNode;
     NodeListPtr openList;
     NodeListPtr closedList;
