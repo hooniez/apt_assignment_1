@@ -42,7 +42,7 @@ void NodeList::addBack(NodePtr newNode){
 bool NodeList::containsNode(NodePtr node){
     bool res = false;
     // Based on coordinates, check whether node is present in this->nodes
-    NodePtr currNode;
+    NodePtr currNode = nullptr;
     for (size_t i = 0; i < length; ++i) {
         currNode = this->nodes[i];
         if (currNode->equals(*node)) {
@@ -50,7 +50,6 @@ bool NodeList::containsNode(NodePtr node){
         }
     }
     return res;
-
 }
 
 void NodeList::clear(){
@@ -80,7 +79,7 @@ std::string NodeList::stringify() {
         y = this->get(i)->getRow();
         dis = this->get(i)->getDistanceToS();
 
-        os << i << "th: (" << x << "," << y << "," << dis << ")\n";
+        os << i << ": (" << x << "," << y << "," << dis << ")\n";
     }
     res = os.str();
     return res;
@@ -88,4 +87,17 @@ std::string NodeList::stringify() {
 
 int NodeList::getMaxLength() {
     return max_length;
+}
+
+NodePtr NodeList::getNodeInTheSameCell(NodePtr node) {
+    // Based on coordinates, check whether node is present in this->nodes
+    NodePtr currNode = nullptr;
+    NodePtr returnNode = nullptr;
+    for (size_t i = 0; i < length; ++i) {
+        currNode = this->nodes[i];
+        if (currNode->equals(*node)) {
+            returnNode = currNode;
+        }
+    }
+    return returnNode;
 }

@@ -16,7 +16,5 @@ add_executable(assignment1
         PathPlanner.h
         IO.cpp
         IO.h
-        Tests.cpp
-        Tests.h
         Types.h
         )

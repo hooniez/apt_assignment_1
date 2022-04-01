@@ -51,6 +51,9 @@ public:
    NodeListPtr getOpenList();
    NodeListPtr getClosedList();
 
+   // Created for testDeepCopyClosedList()
+   NodePtr getGoalNode();
+
 private:
     Env env;
     int rows;

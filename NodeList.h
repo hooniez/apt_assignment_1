@@ -68,6 +68,11 @@ public:
     */
    std::string stringify();
 
+   /*
+    * Created for testDeepCopyClosedList()
+    */
+   NodePtr getNodeInTheSameCell(NodePtr node);
+
 private:
     Node** nodes;
     // Number of nodes currently in the NodeList

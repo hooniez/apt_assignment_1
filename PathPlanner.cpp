@@ -60,7 +60,8 @@ NodeList* PathPlanner::getReachableNodes(){
 }
 
 /*
- * This function needs to be called after separately calling getReachableNodes() as indicated by the main initial template.
+ * This function needs to be called after separately calling getReachableNodes()
+ * as indicated by the main initial template.
  */
 NodeList* PathPlanner::getPath(){
     // Iterate in reverse order to find goalNode
@@ -79,7 +80,7 @@ NodeList* PathPlanner::getPath(){
                 // Update goalNode's distance to the correct value
                 goalNode->setDistanceToS(currNode->getDistanceToS());
                 // Add a deep copy of goalNode at pathList's nodes[goalNode's distance]
-                pathList->addPathNode(new Node(goalNode->getRow(), goalNode->getCol(), goalNode->getDistanceToS()));
+                pathList->addPathNode(new Node(*goalNode));
                 isGoalNodeFound = true;
                 pointerNode = currNode;
                 // The distance of the next node to look for
@@ -93,7 +94,7 @@ NodeList* PathPlanner::getPath(){
                 // decrement currDisToSearch
                 // Empty stack
                 NodePtr topNode = stack->get(stack->getLength() - 1);
-                NodePtr newNode = new Node(topNode->getRow(), topNode->getCol(), topNode->getDistanceToS());
+                NodePtr newNode = new Node(*topNode);
                 topNode = nullptr;
                 pathList->addPathNode(newNode);
                 pointerNode = newNode;
@@ -107,9 +108,9 @@ NodeList* PathPlanner::getPath(){
             // Add it to a stack for further processing.
             if (currNode->isTraversable(*pointerNode)) {
                 if (currNode->getDistanceToS() == 0)
-                    pathList->addPathNode(new Node(currNode->getRow(), currNode->getCol(), currNode->getDistanceToS()));
+                    pathList->addPathNode(new Node(*currNode));
                 else
-                    stack->addBack(new Node(currNode->getRow(), currNode->getCol(), currNode->getDistanceToS()));
+                    stack->addBack(new Node(*currNode));
 
 //                // Deepcopy currNode into nodes[currNode->getDistanceToS()]
 //                pathList->addPathNode(new Node(currNode->getRow(), currNode->getCol(), currNode->getDistanceToS()));
@@ -175,7 +176,9 @@ bool PathPlanner::isReachable(int row, int col) {
 
 // Add traversable nodes not present in openList in the following order: up, right, down, left
 void PathPlanner::addToOpenList() {
-    int currRow = pointerNode->getRow(), currCol = pointerNode->getCol(), currDis = pointerNode->getDistanceToS();
+    int currRow = pointerNode->getRow();
+    int currCol = pointerNode->getCol();
+    int currDis = pointerNode->getDistanceToS();
 
     NodePtr tempNode;
     // Add a node if it is within the boundaries of env and is not already contained in openList
@@ -233,5 +236,9 @@ NodeListPtr PathPlanner::getOpenList() {
 
 NodeListPtr PathPlanner::getClosedList() {
     return closedList;
+}
+
+NodePtr PathPlanner::getGoalNode() {
+    return goalNode;
 }
 
