@@ -1,5 +1,5 @@
-
 #include "PathPlanner.h"
+constexpr int PathPlanner::searchingOrder[NUM_ADJACENT_CELLS][NUM_POINTS];
 
 PathPlanner::PathPlanner(Env env, int rows, int cols): env(env),
                                                        rows(rows),

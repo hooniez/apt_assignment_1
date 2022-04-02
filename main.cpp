@@ -172,7 +172,8 @@ Env make_env(size_t rows, size_t cols) {
     Env env = nullptr;
     if (rows >= 0 && cols >= 0)  {
         env = new char*[rows];
-        for (size_t i = 0; i != rows; ++i) {
+        // Assign each pointer with an array of chars except the last nullptr.
+        for (size_t i = 0; i != rows - 1; ++i) {
             env[i] = new char[cols];
         }
     }
@@ -215,7 +216,7 @@ void printPath(Env env, NodeList* solution) {
     size_t row = 0, col =0;
     char directionSymbols[4] = {'^','>','v','<'};
 
-    for (size_t i = 1; i < solution->getLength() - 1; ++i) {
+    for (int i = 1; i < solution->getLength() - 1; ++i) {
         currNode = solution->get(i);
         nextNode = solution->get(i + 1);
         // Find out a direction from currNode to the next node
