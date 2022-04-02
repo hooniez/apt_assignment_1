@@ -18,7 +18,7 @@ NodeList:: NodeList(NodeList& other): length(0),
     nodes = new Node*[max_length];
     // Deep copy the contents of other.nodes into this->nodes
     NodePtr currOtherNode;
-    for (size_t i = 0; i < other.getLength(); ++i) {
+    for (int i = 0; i < other.getLength(); ++i) {
         currOtherNode = other.get(i);
         addBack(new Node(*currOtherNode));
     }
@@ -40,7 +40,7 @@ bool NodeList::containsNode(NodePtr node){
     bool res = false;
     // Based on coordinates, check whether node is present in this->nodes
     NodePtr currNode = nullptr;
-    for (size_t i = 0; i < length; ++i) {
+    for (int i = 0; i < length; ++i) {
         currNode = this->nodes[i];
         if (currNode->equals(*node)) {
             res = true;
@@ -51,7 +51,7 @@ bool NodeList::containsNode(NodePtr node){
 
 void NodeList::clear(){
     // Delete each Node
-    for (size_t i = 0; i < length; ++i) {
+    for (int i = 0; i < length; ++i) {
         delete nodes[i];
         nodes[i] = nullptr;
     }
@@ -115,7 +115,7 @@ NodePtr NodeList::getTheSameNode(NodePtr node) {
     // Based on coordinates, check whether node is present in this->nodes
     NodePtr currNode = nullptr;
     NodePtr returnNode = nullptr;
-    for (size_t i = 0; i < length; ++i) {
+    for (int i = 0; i < length; ++i) {
         currNode = this->nodes[i];
         if (currNode->equals(*node)) {
             returnNode = currNode;

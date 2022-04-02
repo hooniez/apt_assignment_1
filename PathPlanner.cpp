@@ -5,8 +5,8 @@ PathPlanner::PathPlanner(Env env, int rows, int cols): env(env),
                                                        rows(rows),
                                                        cols(cols) {
     char currChar;
-    for (size_t currRow = 0; currRow < rows; ++currRow) {
-        for (size_t currCol = 0; currCol < cols; ++currCol) {
+    for (int currRow = 0; currRow < rows; ++currRow) {
+        for (int currCol = 0; currCol < cols; ++currCol) {
             currChar = env[currRow][currCol];
             // Assign startNode with a cell that contains 'S'
             if (currChar == SYMBOL_START)
