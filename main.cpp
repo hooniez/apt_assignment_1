@@ -1,4 +1,20 @@
 /*
+ * Code Description
+ *
+ * For Milestone 2, the provided pseudocode has been translated into
+ * working code verbatim. For Milestone 3, iterating closedList
+ * in reverse order, coupled with use of a stack-like data structure, made it
+ * easier to solve the problem of finding the shortest path. The requirement
+ * to return pathList from start to finish was met by utilising the distance
+ * property found in each node as an index of pathList. Therefore, pathList
+ * is filled from back to front, resulting in storing nodes from start to finish.
+ * For Milestone 4, following the recommendation to maximise the provided functions
+ * and introduce as minimal modification to them required the addition of a nullptr
+ * at the end of the array of pointers, even though it is more efficient to store
+ * the number of rows and columns using references to pointers passed to readEnvStdin.
+ *
+ **********************************
+ *
  * Black-box Test Case Description
  *
  * test1.env tests whether the algorithm finds the right path from S to G
@@ -40,11 +56,15 @@
  * test12.env contains the smallest map there can be with the minimum number
  * of columns (Optional black-box test for Milestone 4).
  *
- * test13.env contains a map of size 1000 * 3 (Optional black-box test for Milestone 4).
+ * test13.env contains a map of size 1000 * 3
+ * (Optional black-box test for Milestone 4).
  *
- * test14.env contains a map of size 3 * 1000 (Optional black-box test for Milestone 4).
+ * test14.env contains a map of size 3 * 1000
+ * (Optional black-box test for Milestone 4).
  *
- * test15.env contains a mpa of size 99 * 100 (It takes a few minutes to test it) (Optional black-box test for Milestone 4).
+ * test15.env contains a mpa of size 99 * 100 (It takes a few minutes to test it)
+ * (Optional black-box test for Milestone 4).
+ *
  */
 
 
