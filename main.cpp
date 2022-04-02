@@ -32,17 +32,19 @@
  * test9.env contains the same env as test8.env except that S and G are swapped.
  *
  * test10.env factors in the case where the problems of equidistant paths and
- * zigzagging movement coexist.
+ * zigzag movement coexist.
  *
  * test11.env contains the smallest map there can be with the minimum number
- * of rows.
+ * of rows (Optional black-box test for Milestone 4).
  *
  * test12.env contains the smallest map there can be with the minimum number
- * of columns.
+ * of columns (Optional black-box test for Milestone 4).
  *
- * test13.env contains a map of size 1000 * 3.
+ * test13.env contains a map of size 1000 * 3 (Optional black-box test for Milestone 4).
  *
- * test14.env contains a map of size 3 * 1000.
+ * test14.env contains a map of size 3 * 1000 (Optional black-box test for Milestone 4).
+ *
+ * test15.env contains a mpa of size 99 * 100 (It takes a few minutes to test it) (Optional black-box test for Milestone 4).
  */
 
 
@@ -89,10 +91,12 @@ int main(int argc, char** argv) {
 
     Env env = nullptr;
     readEnvStdin(env);
-    // As Ruwan has recommended maximising the use of provided functions,
-    // readEnvStdin's function signature is kept as it was originally found.
-    // Given this constraint, the below two methods are used to find out
-    // the number of rows and columns of env.
+    /*
+     * As Ruwan has recommended maximising the use of provided functions,
+     * readEnvStdin's function signature is kept as it was originally found.
+     * Given this constraint, the below two methods are used to find out
+     * the number of rows and columns of env.
+     */
     size_t numRows = getEnvRows(env);
     size_t numCols = getEnvCols(env);
 
@@ -135,7 +139,6 @@ void readEnvStdin(Env &env) {
     ++numRows;
 
     std::string s = os.str();
-//    const char* chars = s.c_str();
 
     // Create an array of pointers to an array of char on the heap
     env = make_env(numRows, numCols);
@@ -204,7 +207,7 @@ size_t getEnvCols(Env env) {
     return numCols;
 }
 
-// First update the environment with direction symbols and print it
+// First update the environment with direction symbols and then print it.
 void printPath(Env env, NodeList* solution) {
     NodePtr currNode = nullptr;
     NodePtr nextNode = nullptr;
@@ -319,7 +322,7 @@ void testDeepCopyClosedList() {
     // Get goalNode stored in the original closedList.
     NodePtr goalNode = pathPlanner->getGoalNode();
     // Get a deep copy of goalNode stored in deepCopyClosedList
-    NodePtr goalNodeCopy = deepCopyClosedList->getNodeInTheSameCell(goalNode);
+    NodePtr goalNodeCopy = deepCopyClosedList->getTheSameNode(goalNode);
 
     // Change the distance of goalNode to -1 in goalNode
     // and output distances of both goalNode and goalNodeCopy

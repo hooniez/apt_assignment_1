@@ -8,7 +8,7 @@ class Node {
 public:
 
    /*                                           */
-   /* DO NOT MOFIFY ANY CODE IN THIS SECTION    */
+   /* DO NOT MODIFY ANY CODE IN THIS SECTION    */
    /*                                           */
 
    // get row-co-ordinate
@@ -21,12 +21,14 @@ public:
    int getDistanceToS();
    void setDistanceToS(int distanceToS);
 
-   void setRow(int);
-   void setCol(int);
    bool equals(Node &);
-   // Checks whether this Node is traversable from other Node
+
+   // Check whether this Node is traversable from other Node.
    bool isTraversable(Node &other);
-   // Returns Up, Right, Down, or Left, depending on where this Node is relative to other Node
+
+   /* Return Up, Right, Down, or Left
+    * depending on where this Node is relative to other Node.
+    */
    Direction getDirectionTo(Node &other);
    
    // Constructor/Destructor
@@ -42,7 +44,7 @@ private:
 };
 
 /*                                           */
-/* DO NOT MOFIFY THIS TYPEDEF                */
+/* DO NOT MODIFY THIS TYPEDEF                */
 /*                                           */
 // Pointer to a Position-Distance
 typedef Node* NodePtr;

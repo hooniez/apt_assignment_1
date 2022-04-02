@@ -7,14 +7,11 @@ include_directories(.)
 
 add_executable(assignment1
         main.cpp
-        milestone4.h
         Node.cpp
         Node.h
         NodeList.cpp
         NodeList.h
         PathPlanner.cpp
         PathPlanner.h
-        IO.cpp
-        IO.h
         Types.h
         )

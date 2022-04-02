@@ -7,16 +7,15 @@
 #include "Types.h"
 #include <string>
 
-#define NUM_CELLS 4
+#define NUM_ADJACENT_CELLS 4
 #define NUM_POINTS 2
 
 class PathPlanner {
 public:
 
    /*                                           */
-   /* DO NOT MOFIFY ANY CODE IN THIS SECTION    */
+   /* DO NOT MODIFY ANY CODE IN THIS SECTION    */
    /*                                           */
-
 
    // Initialise with a given Env of size (rows,cols)
    PathPlanner(Env env, int rows, int cols);
@@ -28,24 +27,21 @@ public:
    void initialPosition(int row, int col);
 
    // Method for Milestone 2
-   // Return a DEEP COPY of the NodeList of all node's
-   //    that the robot can reach with distances
+   // Return a DEEP COPY of the NodeList of all nodes
+   // that the robot can reach with distances
    NodeList* getReachableNodes();
 
-
    // Method for Milestone 3
-   // Get the path from the starting position to the given goal co-ordinate
-   //    The path should be a DEEP COPY
+   // Get the path from the startNode to goalNode.
    NodeList* getPath();
 
    void goalPosition(int row, int col);
 
-   // sub-functions that make up getReachableNodes()
+   // Sub-functions that make up getReachableNodes()
    bool isReachable(int row, int col);
    void addToOpenList();
    void addToClosedList();
-   bool isCurrNodeAssigned();
-
+   bool isPointerNodeAssigned();
 
    // functions created for testing purposes
    NodeListPtr getOpenList();
@@ -66,9 +62,7 @@ private:
     NodePtr pointerNode;
     NodePtr goalNode;
     // The order in which to add new nodes: Up, Right, Down, Left
-    static constexpr int addingOrder[NUM_CELLS][NUM_POINTS] = {{-1, 0},{0, 1}, {1, 0}, {0, -1}};
+    static constexpr int searchingOrder[NUM_ADJACENT_CELLS][NUM_POINTS] = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}};
 };
-
-
 
 #endif // COSC_ASS_ONE_PATH_PLANNING
