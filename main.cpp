@@ -67,9 +67,7 @@
  *
  */
 
-
 #include <iostream>
-#include <stdexcept> // part of the error handling library
 #include <string>
 #include <sstream>
 

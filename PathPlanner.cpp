@@ -50,8 +50,8 @@ void PathPlanner::initialPosition(int row, int col){
 
 NodeList* PathPlanner::getReachableNodes(){
     do { // In the first loop, startNode is in openList but not in closedList
-        addToOpenList();
-        addToClosedList();
+            addToOpenList();
+            addToClosedList();
         // While there's a node in openList absent in closedList
     } while (isPointerNodeAssigned());
     return new NodeList(*closedList);
